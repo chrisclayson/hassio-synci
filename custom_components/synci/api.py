@@ -9,6 +9,7 @@ from typing import Any
 
 import aiohttp
 
+BASE_URL="https://api.synci.io/api/v1"
 
 class SynciIntegrationApiClientError(Exception):
   """Exception to indicate a general API error."""
@@ -81,20 +82,20 @@ class SynciIntegrationApiClient:
     """Get data from the API."""
     return (await self._api_wrapper(
       method="get",
-      url="https://api.synci.io/api/v1/finance/connections",
+      url=f"{BASE_URL}/finance/connections",
     ))["data"]
 
-  async def async_get_connection_data(self, id) -> Any:
+  async def async_get_connection_data(self, account_id: int) -> Any:
     """Get data from the API."""
     return (await self._api_wrapper(
       method="get",
-      url=f"https://api.synci.io/api/v1/finance/connections/{id}",
+      url=f"{BASE_URL}/finance/connections/{account_id}",
     ))["data"]
 
   async def async_get_user_data(self) -> Any:
     return (await self._api_wrapper(
       method="get",
-      url="https://api.synci.io/api/v1/user",
+      url=f"{BASE_URL}/user",
     ))["data"]
 
   async def _api_wrapper(
@@ -102,7 +103,6 @@ class SynciIntegrationApiClient:
     method: str,
     url: str,
     data: dict | None = None,
-    headers: dict | None = None,
   ) -> Any:
     """Get information from the API."""
     try:
@@ -110,8 +110,8 @@ class SynciIntegrationApiClient:
         response = await self._session.request(
           method=method,
           url=url,
-          headers= {
-            'Authorization': "Bearer " + self._api_token,
+          headers={
+            "Authorization": f"Bearer {self._api_token}",
           },
           json=data,
         )
