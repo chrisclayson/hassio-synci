@@ -1,0 +1,17 @@
+services:
+  home-assistant:
+    image: homeassistant/home-assistant:stable
+    container_name: home-assistant
+    ports:
+      - "8123:8123"
+      - "5678:5678"
+    environment:
+      TZ: Europe/London
+      PUID: 1000
+      PGID: 1000
+      PACKAGES: iputils
+      UMASK: 007
+    volumes:
+      - ./config/configuration.yaml:/config/configuration.yaml
+      - ./custom_components:/config/custom_components
+      - /var/run/docker.sock:/var/run/docker.sock

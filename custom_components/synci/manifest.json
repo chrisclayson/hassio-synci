@@ -1,0 +1,13 @@
+{
+  "domain": "synci",
+  "name": "synci.io",
+  "codeowners": [
+    "@chrisclayson"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/chrisclayson/hassio-synci",
+  "iot_class": "cloud_polling",
+  "integration_type": "service",
+  "issue_tracker": "https://github.com/chrisclayson/hassio-synci/issues",
+  "version": "0.1.0"
+}

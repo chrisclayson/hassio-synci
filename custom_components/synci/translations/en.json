@@ -1,0 +1,20 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "If you need help with the configuration have a look here: {documentation_url}",
+        "data": {
+          "api_token": "API Token"
+        }
+      }
+    },
+    "error": {
+      "auth": "API token is wrong.",
+      "connection": "Unable to connect to synci.io",
+      "unknown": "Unknown error occurred."
+    },
+    "abort": {
+      "already_configured": "This entry is already configured."
+    }
+  }
+}
